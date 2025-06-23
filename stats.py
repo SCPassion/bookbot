@@ -24,3 +24,9 @@ def restruct_dict_to_array(mapping_dict):
 
 def sort_on(items):
   return items["num"]
+
+def get_book_text(file_path):
+  file_content = ""
+  with open(file_path) as f:
+    file_content = f.read()
+  return file_content

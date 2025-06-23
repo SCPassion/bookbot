@@ -1,7 +1,14 @@
-from stats import count_words, count_unique_words, restruct_dict_to_array
+import sys
+from stats import count_words, count_unique_words, restruct_dict_to_array, get_book_text
 
 def main():
-  file_path = "books/frankenstein.txt"
+  arg = sys.argv
+
+  if(len(arg) < 2):
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+  
+  file_path = arg[1]
   book_text = get_book_text(file_path)
   word_count = count_words(book_text)
   unique_words = count_unique_words(book_text)
@@ -15,12 +22,6 @@ def main():
   for dict in words_count_array:
     if dict["char"].isalpha():
       print(f"{dict["char"]}: {dict["num"]}")
-
-def get_book_text(file_path):
-  file_content = ""
-  with open(file_path) as f:
-    file_content = f.read()
-  return file_content
 
 #  This code reads the content of a book file and prints it to the console.
 main()
